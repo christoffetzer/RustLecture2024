@@ -1,0 +1,101 @@
+[workspace]
+
+members = [
+    "1_hello_world",
+    "2_collatz",
+    "3_check_collatz",
+    "3b_check_collatz",
+    "3c_check_collatz",
+    "3d_collatz",
+    "4_rnd_collatz",
+    "5_u128_collatz",
+    "6_no_overflow_collatz",
+    "7_list_files",
+    "8_arrays",
+    "9_min_max_integers",
+    # "10_integer_overflow",
+    "11_show_bits",
+    "12_terminate_always",
+    "13_terminate_always_with_test",
+    "14_integer_sizes",
+    "15_bench_collatz",
+    "16_fail_stop",
+    "17_omission_errors",
+    "18_checked_integers",
+    "19_integer_sizes_fmt",
+    "20_bench_u128",
+    "21_big_uint",
+    "22_termination_check",
+    "23_scoping",
+    "24_static_overflow_check",
+    "30_bin_collatz",
+    "31_u16_collatz",
+    "32_iter_collatz", 
+    "33_example_no_termination",
+    "34_example_unbounded_no_termination",
+    "35_bounded_termination",
+    "40_option",
+    "41_variable_names", 
+    "42_search_in_array", 
+    "43_search_in_arc_array",
+]
+
+resolver = "2"
+
+[profile]
+
+[profile.dev]
+overflow-checks = false
+
+[profile.test]
+overflow-checks = true
+
+[profile.release]
+overflow-checks = true
+
+[profile.bench]
+overflow-checks = true
+opt-level = 3
+
+
+[profile.opt0noc]
+inherits = "release"
+overflow-checks = false
+opt-level = 0
+
+
+[profile.opt1noc]
+inherits = "release"
+overflow-checks = false
+opt-level = 1
+
+[profile.opt2noc]
+inherits = "release"
+overflow-checks = false
+opt-level = 2
+
+[profile.opt3noc]
+inherits = "release"
+overflow-checks = false
+opt-level = 3
+
+
+[profile.opt0oc]
+inherits = "release"
+overflow-checks = true
+opt-level = 0
+
+[profile.opt1oc]
+inherits = "release"
+overflow-checks = true
+opt-level = 1
+
+[profile.opt2oc]
+inherits = "release"
+overflow-checks = true
+opt-level = 0
+
+[profile.opt3oc]
+inherits = "release"
+overflow-checks = true
+opt-level = 3

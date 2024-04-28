@@ -1,0 +1,15 @@
+[package]
+name = "list_files"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+glob = "*"
+shells = "*"
+log = "*"
+io = "*"
+clap = { version = "*" }
+clap-verbosity-flag = "*"
+env_logger="*"

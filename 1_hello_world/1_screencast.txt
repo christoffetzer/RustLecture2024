@@ -1,0 +1,25 @@
+# We execute the following commands on the command line.
+
+# We get a copy of the code from the git repository
+
+git clone https://github.com/christoffetzer/rust_examples_2024.git
+
+# We need to enter the directory
+# cd = change directory
+cd rust_examples_2024
+
+# We look at the first "package"
+
+cd 1_hello_world
+
+# Let's have a look at the code
+
+cat src/main.rs
+
+# ok, looks like a simple hello world program
+# let's build and run the program with "cargo"
+
+cargo run
+
+
+

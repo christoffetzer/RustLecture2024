@@ -1,0 +1,25 @@
+[package]
+name = "checked_collatz"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+colored = "*"
+rand = "*"
+
+[dev-dependencies]
+criterion = { version = "*", features = ["html_reports"] }
+
+[[bench]]
+name = "benchmark"
+harness = false
+
+[lib]
+bench = false
+
+[[bin]]
+name = "collatz"
+path = "src/main.rs"
+bench = false
