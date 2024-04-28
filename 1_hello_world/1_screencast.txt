@@ -2,11 +2,11 @@
 
 # We get a copy of the code from the git repository
 
-git clone https://github.com/christoffetzer/rust_examples_2024.git
+git clone https://github.com/christoffetzer/RustLecture2024
 
 # We need to enter the directory
 # cd = change directory
-cd rust_examples_2024
+cd RustLecture2024
 
 # We look at the first "package"
 
@@ -20,6 +20,5 @@ cat src/main.rs
 # let's build and run the program with "cargo"
 
 cargo run
-
 
 
