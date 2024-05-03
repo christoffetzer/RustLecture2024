@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 rand = "*"
+inline_colorization = "*"
+num-traits = "0.2"

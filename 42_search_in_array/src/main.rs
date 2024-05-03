@@ -46,15 +46,30 @@ fn get_index_3(book: &[Name], id: u64) -> i32 {
     -1 // return error value if ID is not found
 }
 
-
 // Rust-like implementation
 fn get_index<'a>(book: &'a [Name<'a>], id: u64) -> Option<(usize, Name<'a>)> {
     for (i, value) in book.iter().enumerate() {
         if value.id == id {
-            return Some((i, value.clone()))
+            return Some((i, value.clone()));
         }
     }
     None // return error value if ID is not found
+}
+
+// Do not use index
+#[allow(clippy::manual_find)]
+fn get_entry_1<'a>(book: &'a [Name<'a>], id: u64) -> Option<&'a Name<'a>> {
+    for value in book {
+        if value.id == id {
+            return Some(value);
+        }
+    }
+    None // return error value if ID is not found
+}
+
+// use idiomatic Rust...
+fn get_entry<'a>(book: &'a [Name<'a>], id: u64) -> Option<&'a Name<'a>> {
+    book.iter().find(|&value| value.id == id)
 }
 
 fn main() {
@@ -81,7 +96,7 @@ fn main() {
     println!("Loop 2: Printing address book entries {to_print:?}");
     for id in to_print {
         let i = get_index_2(&address_book, id) as usize;
-        println!("Id {id}: Name={name}", name=address_book[i].name);
+        println!("Id {id}: Name={name}", name = address_book[i].name);
     }
 
     // to crash:
@@ -109,6 +124,22 @@ fn main() {
         } else {
             println!("Id {id} does not exists!");
         }
+    }
+
+    let to_print = [3, 1, 4];
+    println!("Loop 5: Printing address book entries {to_print:?}");
+    for id in to_print {
+        if let Some(v) = get_entry_1(&address_book, id) {
+            println!("Id {id}: Name={:?}", v.name);
+        } else {
+            println!("Id {id} does not exists!");
+        }
+    }
+
+    let to_print = [3, 1, 4];
+    println!("Loop 6: Printing address book entries {to_print:?}");
+    for id in to_print {
+        println!("Id {id}: entry={v:?}", v = get_entry(&address_book, id));
     }
 
 }

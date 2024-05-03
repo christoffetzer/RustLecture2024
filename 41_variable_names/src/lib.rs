@@ -97,7 +97,7 @@ pub fn checked_collatz_3(mut n: u64) -> Option<u64> {
         if n % 2 == 0 {
             n /= 2;
         } else { // let chain ... not a stable feature
-            n = n.checked_mul(3)?.checked_add(1)? 
+            n = 3u64.checked_mul(n)?.checked_add(1)? 
         }
     }
     Some(steps)

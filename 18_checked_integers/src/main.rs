@@ -9,10 +9,10 @@ fn main() {
     for i in 1..=2000 {
         let n = rng.gen::<u64>();
         if let Some(steps) = checked_collatz(n) {
-            println!("Iternation {i}: Collatz({n}) reaches 1 in {steps} steps");
+            println!("Iteration {i}: Collatz({n}) reaches 1 in {steps} steps");
             computed += 1;
         } else {
-            println!("Iternation {i}: Collatz({n}) - {}", "skipping".to_string().red());
+            println!("Iteration {i}: Collatz({n}) - {}", "skipping".to_string().red());
             skipped += 1;
         }
     }
