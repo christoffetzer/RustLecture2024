@@ -19,7 +19,7 @@ fn main() {
                 // we need one less bit after division
                 x /= 2;
             } else {
-                // we need about two extra bits for new x 
+                // we need about two extra bits for new x
                 x = 3 * x + 1;
             }
         }

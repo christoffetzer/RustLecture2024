@@ -1,9 +1,7 @@
+use colored::*;
 use rand::Rng;
 use std::panic;
 use std::process;
-use colored::*;
-
-
 
 fn set_panic_hook() {
     panic::set_hook(Box::new(|panic_info| {

@@ -20,6 +20,6 @@ harness = false
 bench = false
 
 [[bin]]
-name = "collatz"
+name = "termination_check"
 path = "src/main.rs"
 bench = false

@@ -18,6 +18,6 @@ harness = false
 bench = false
 
 [[bin]]
-name = "collatz"
+name = "collatz_u128"
 path = "src/main.rs"
 bench = false

@@ -2,10 +2,10 @@ use cbitmap::bitmap::*;
 
 fn main() {
     // we seen that program does not terminate for 14563
-    let mut n = 14563u16; 
-    print!("{n}"); 
+    let mut n = 14563u16;
+    print!("{n}");
     // we want to detect if we are in an infinite loop
-    // this happens if we assign to n a value that 
+    // this happens if we assign to n a value that
     // we have assigned previously
     let mut bitmap = newmap!(0b0; 65536);
     while n != 1 {

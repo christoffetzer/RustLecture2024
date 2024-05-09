@@ -141,5 +141,4 @@ fn main() {
     for id in to_print {
         println!("Id {id}: entry={v:?}", v = get_entry(&address_book, id));
     }
-
 }

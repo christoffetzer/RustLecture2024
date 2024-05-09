@@ -1,4 +1,4 @@
 pub fn main() {
     println!("Hello,🌎!");
-    println!("Hello, world!"); 
+    println!("Hello, world!");
 }

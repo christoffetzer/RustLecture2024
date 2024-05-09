@@ -1,18 +1,17 @@
-use glob::{glob};
+use glob::glob;
 use std::error::Error;
 
-use std::io::prelude::*;
 use std::fs::File;
+use std::io::prelude::*;
 
-use std::{path::PathBuf};
-use shells::sh;
-use log::{info, error, debug};
 use clap::Parser;
 use clap_verbosity_flag::{ErrorLevel, Verbosity};
+use log::{debug, error, info};
+use shells::sh;
+use std::path::PathBuf;
 
 mod logging;
 use logging::{init_logger, LogExt};
-
 
 fn process_file(file: &mut File, path: PathBuf) -> Result<(), Box<dyn Error>> {
     info!("processing_file: {:?}", path.display());
@@ -20,21 +19,19 @@ fn process_file(file: &mut File, path: PathBuf) -> Result<(), Box<dyn Error>> {
     if code != 0 {
         error!("Error {code}: {stderr} (Error 27279-8684-21823)");
     } else {
-        debug!("File {}: {content}",  path.display());
+        debug!("File {}: {content}", path.display());
         let _ = write!(file, "{content}");
     }
     Ok(())
 }
- 
 
 fn process_pattern(file: &mut File, pattern: &str) -> Result<(), Box<dyn Error>> {
-
     // write!(&mut writer, "Factorial of {} = {}", num, factorial);
 
     for entry in glob(pattern).log_msg("Failed to read glob pattern")? {
         match entry {
             Ok(path) => process_file(file, path)?,
-            Err(e) => { Err(e).log_msg("ERROR: processing pattern")?  },
+            Err(e) => Err(e).log_msg("ERROR: processing pattern")?,
         }
     }
     Ok(())
@@ -65,15 +62,17 @@ struct Args {
     /// File name
     #[clap(short, long, default_value = "config_framgment.yaml")]
     filename: String,
-
 }
 
-fn main() -> Result<(),std::io::Error> {
+fn main() -> Result<(), std::io::Error> {
     let args = Args::parse();
     init_logger(&args.verbose);
     info!("List files: Arguments= {:?}", args);
     let mut file = File::create(&args.filename).log_msg("")?;
 
-    let _ = process_pattern(&mut file, &args.pattern).log_msg(&format!("Error processing pattern {} 21076-25241-23702", args.pattern));
+    let _ = process_pattern(&mut file, &args.pattern).log_msg(&format!(
+        "Error processing pattern {} 21076-25241-23702",
+        args.pattern
+    ));
     Ok(())
 }

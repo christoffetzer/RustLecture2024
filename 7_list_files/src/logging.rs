@@ -1,6 +1,5 @@
-use log::{error};
 use clap_verbosity_flag::{ErrorLevel, Verbosity};
-
+use log::error;
 
 pub fn init_logger(verbose: &Verbosity<ErrorLevel>) {
     env_logger::Builder::new()
@@ -39,4 +38,3 @@ where
         }
     }
 }
-

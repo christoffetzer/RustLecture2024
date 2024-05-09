@@ -4,7 +4,7 @@ fn main() {
     // Random number generator
     let mut rng = rand::thread_rng();
     for i in 1..=2000 {
-        // Generate random positive number 
+        // Generate random positive number
         let mut n = rng.gen::<u64>() + 1;
         print!("Iteration {i}: {n}");
         while n != 1 {

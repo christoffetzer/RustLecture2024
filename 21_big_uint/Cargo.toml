@@ -20,6 +20,6 @@ harness = false
 bench = false
 
 [[bin]]
-name = "collatz"
+name = "big_uint"
 path = "src/main.rs"
 bench = false

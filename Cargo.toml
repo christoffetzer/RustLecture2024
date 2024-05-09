@@ -37,7 +37,12 @@ members = [
     "40_option",
     "41_variable_names", 
     "42_search_in_array", 
-    "43_search_in_arc_array",
+    "43_search_in_arc_array", 
+    "50_monads", 
+    "51_match_statements", 
+    "52_function_as_argument",
+    "53_simple_expr",
+    "54_expr_option",
 ]
 
 resolver = "2"
