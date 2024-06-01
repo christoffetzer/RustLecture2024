@@ -25,6 +25,13 @@ fn checked_div(m: i32, n: i32) -> Option<i32> {
     }
 }
 
+
+// return Some in case we can compute division
+fn unchecked_div_log(m: i32, n: i32) -> (i32, String) {
+        let r = m / n;
+        (r, format!("Div(m={m}/n={n})={r}"))
+}
+
 // return Some in case we can compute division
 fn checked_div_log(m: i32, n: i32) -> (Option<i32>, String) {
     if n == 0 {
@@ -33,6 +40,34 @@ fn checked_div_log(m: i32, n: i32) -> (Option<i32>, String) {
         let r = m / n;
         (Some(r), format!("Div(m={m}/n={n})={r}"))
     }
+}
+
+fn unchecked_eval_log(e: &Expr) -> (i32, String) {
+    match e {
+        Value(v) => (*v, format!("Value({v})")),
+        Div(operands) => {
+            let ((vl, ll), (vr, lr)) = (unchecked_eval_log(&operands.0), unchecked_eval_log(&operands.1));
+            let (v, l) = unchecked_div_log(vl, vr);
+            (v, format!("{l} where (m={ll}, n={lr})"))
+        }
+    }
+}
+
+
+fn unchecked_eval_log2(e: &Expr) -> (i32, String) {
+    match e {
+        Value(v) => (*v, format!("Value({v})")),
+        Div(operands) => {
+            let ((vl, ll), (vr, lr)) = (unchecked_eval_log2(&operands.0), unchecked_eval_log2(&operands.1));
+                let (v, l) = unchecked_div_log(vl, vr);
+                (v, format!("{l} where (m={ll}, n={lr})"))
+        }
+    }
+}
+
+fn apply(l: (i32,String), r: (i32,String)) -> (i32,String) {
+    let (r, l) = unchecked_div_log(l.0, r.0);
+    (r, format!("r={r}"))
 }
 
 fn eval_log(e: &Expr) -> (Option<i32>, String) {
@@ -103,5 +138,5 @@ fn main() {
             Div(Box::new((Value(20), Value(0)))),
         ))),
     )));
-    println!("- e5 = {e5:?} -> eval_result(e)  = {:?}", eval_result(&e5));
+    println!("- e5 = {e5:?}\n  -> eval_result(e)  = {:?}", eval_result(&e5));
 }

@@ -28,6 +28,7 @@ members = [
     "22_termination_check",
     "23_scoping",
     "24_static_overflow_check",
+    "25_simple_scope",
     "30_bin_collatz",
     "31_u16_collatz",
     "32_iter_collatz", 
@@ -42,7 +43,10 @@ members = [
     "51_match_statements", 
     "52_function_as_argument",
     "53_simple_expr",
-    "54_expr_option",
+    "54_expr_option", 
+    "55_no_panic", 
+    "56_owner_example",
+    "60_counter",
 ]
 
 resolver = "2"

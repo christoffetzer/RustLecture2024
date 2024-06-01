@@ -95,6 +95,14 @@ fn variant_6() -> u32 {
     v
 }
 
+fn bool_to_u32(check: bool) -> u32 {
+    if check {
+        1
+    } else {
+        0
+    }
+}
+
 struct Scope {
     scope: u32,
     vid: u32,
@@ -149,9 +157,10 @@ fn main() {
     println!("G: {v}");
     let v = 1_4; 
     println!("H: {v}");
+    main1()
 }
 
-fn variant_3() {
+fn variant_8() {
     let v = new_id(1,1); // scope 0, instance 1
     {
         let v = new_id(2,2); // scope 0, instance 2
@@ -162,7 +171,7 @@ fn variant_3() {
     let v = new_id(1,4); // scope 0, instance 3
 }
 
-fn main() {
+fn main1() {
     let my_variable=1_0;
     print_type_of("my_variable", &my_variable);
     println!("Output variant_1: {}!", variant_1());
@@ -176,4 +185,7 @@ fn main() {
     println!("Output variant_5: {}!", variant_5());
     println!("Output variant_6: {}!", variant_6());
     variant_7();
+    println!("Output bool_to_u32(true)={}", bool_to_u32(true));
+    println!("Output bool_to_u32(false)={}", bool_to_u32(false));
+    variant_8();
 }

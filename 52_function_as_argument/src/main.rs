@@ -28,6 +28,15 @@ fn closure_return(increment: i32) -> Box<dyn Fn(i32) -> i32> {
     Box::new(move |a| a + increment)
 }
 
+
+fn test_closure(increment: i32)  {
+    let closure = |a| a + increment;
+    println!("increments = {increment}; closure(10)={}", closure(10));
+    println!("increments = {increment}; closure_return(10)={}", closure_return(increment)(10))
+
+}
+
+
 fn main() {
     let result = apply(square, 5);
     println!("The result is: {}", result);
@@ -48,4 +57,7 @@ fn main() {
         "The result for closure_return(5)(7)= {}",
         closure_return(5)(7)
     );
+    test_closure(19);
+    test_closure(30);
+
 }
